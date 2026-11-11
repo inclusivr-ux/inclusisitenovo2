@@ -172,7 +172,7 @@ window.INCLUSIVR_CONFIG = {
     /* Trecho do jogo enviado em 05/11 (WhatsApp Video 00.33.25), otimizado e sem som. O trecho de 28/10
        (sinalizaacao-vr-trecho.mp4) continua tocando sozinho, sem som, no "O que vem por aí" do início. */
     vr: [
-      { tipo: 'video', src: 'assets/video/vr-espelho-aia.mp4', capa: 'assets/img/vr/vr-espelho-aia-capa.jpg', legenda: 'Trecho do SinalizaAção VR em desenvolvimento: a Maga Aia na biblioteca, diante da maquete de Signária (vídeo sem som).' }
+      { tipo: 'video', auto: true, src: 'assets/video/vr-espelho-aia.mp4', capa: 'assets/img/vr/vr-espelho-aia-capa.jpg', legenda: 'Trecho do SinalizaAção VR em desenvolvimento: a Maga Aia na biblioteca, diante da maquete de Signária (vídeo sem som).' }
     ]
   },
 

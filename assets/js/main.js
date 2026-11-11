@@ -170,7 +170,7 @@
      Passando o mouse sobre um item aparece a lista dos blocos da página (os que têm
      título pequeno, como "Por dentro"). Clicando no item, a lista fica aberta até
      clicar nele de novo (ou apertar Esc). A primeira linha da lista abre a página.
-     No celular o menu continua igual. Sem JavaScript, o item é só o link da página.
+     No celular, tocar no item abre a lista logo abaixo dele. Sem JavaScript, o item é só o link da página.
      Para incluir um bloco novo, acrescente uma linha em BLOCOS (id da seção + texto).
      ========================================================================= */
   (function () {
@@ -249,6 +249,14 @@
         setTimeout(function () { if (fixo !== li && !li.contains(document.activeElement) && !li.matches(':hover')) fechar(li); }, 0);
       });
       sub.addEventListener('click', function (e) { if (e.target.closest('a')) fecharTodos(); });
+      /* celular: tocar no item abre a lista de blocos logo abaixo (como no computador); a primeira linha da lista abre a página */
+      a.addEventListener('click', function (e) {
+        if (desktop.matches) return;
+        e.preventDefault(); e.stopPropagation();
+        var estavaAberto = li.classList.contains('sub-aberto');
+        fecharTodos();
+        if (!estavaAberto) abrir(li);
+      });
     });
     document.addEventListener('keydown', function (e) {
       if (e.key !== 'Escape') return;
@@ -712,6 +720,24 @@
      vídeos curtos do "Espelho Mágico da Aia" na página do SinalizaAção VR.
      ========================================================================= */
   var MIDIAS = C.midias || {};
+  /* vídeo com "auto: true" no config: toca sozinho, sem som e em repetição, só enquanto está na tela.
+     Se a pessoa pausar, não volta sozinho; com "reduzir movimento" ou economia de dados, só toca no clique. */
+  function tocarSozinho(v) {
+    v.muted = true; v.loop = true; v.setAttribute('muted', '');
+    var pessoa = false, pausaAuto = false;
+    var economia = !!(navigator.connection && navigator.connection.saveData);
+    v.addEventListener('pause', function () { if (pausaAuto) { pausaAuto = false; return; } if (!v.ended) pessoa = true; });
+    v.addEventListener('play', function () { pessoa = false; });
+    var parar = function () { if (!v.paused) { pausaAuto = true; v.pause(); } };
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (ents) {
+        if (ents[0].isIntersecting) {
+          if (!pessoa && !economia && IVR.movimentoPermitido()) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        } else parar();
+      }, { threshold: .4 }).observe(v);
+    }
+    document.addEventListener('inclusivr:movimento', function (e) { if (!e.detail.permitido) parar(); });
+  }
   $$('[data-midias]').forEach(function (lista) {
     var itens = MIDIAS[lista.getAttribute('data-midias')] || [];
     itens.forEach(function (m) {
@@ -723,6 +749,7 @@
         var v = document.createElement('video');
         v.className = 'clipe__video'; v.controls = true; v.playsInline = true; v.preload = 'none';
         v.setAttribute('playsinline', '');
+        if (m.auto) tocarSozinho(v);
         if (m.capa) v.poster = raiz + m.capa;
         v.src = raiz + m.src;
         if (m.legenda) v.setAttribute('aria-label', 'Vídeo: ' + m.legenda);

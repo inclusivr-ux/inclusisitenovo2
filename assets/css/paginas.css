@@ -1691,3 +1691,41 @@ ul.vr-projeto__lista { list-style: none; margin: var(--e-5) 0 0; padding: 0; dis
 @media (max-width: 759px) { .cidade-brilhos { display: none; } }
 @media (prefers-reduced-motion: reduce) { .cena-signaria__cidade:hover .cidade-brilhos i { animation: none; opacity: .85; } }
 .sem-movimento .cena-signaria__cidade:hover .cidade-brilhos i { animation: none; opacity: .85; }
+
+/* --- Rodada 18 --- */
+/* a) placa "uma história construída por muitas mãos": cresce a partir do centro (o "scale" separado desviava a placa, que usa translateX(-50%)) */
+.holo__legenda:hover { scale: 1; transform: translateX(-50%) rotate(-1.5deg) scale(1.08); }
+/* b) a abelha fica sempre na frente de tudo o que cresce ao passar o mouse */
+.passeio-abelha, .voo-abelha { z-index: 30; }
+/* d) cartas do leque em "Sem celular, em casa": mantêm a proporção (a regra dos quadrados achatava as cartas) */
+.funcao--quadrado .funcao__imagem--cartas { display: grid; place-items: center; }
+.funcao--quadrado .funcao__imagem--cartas .leque-cartas { width: min(74%, 190px); }
+.funcao--quadrado .funcao__imagem--cartas .leque-cartas img { aspect-ratio: auto; height: auto; width: 34%; object-fit: contain; }
+/* e) quem desenhou, no celular: foto do Igor centralizada */
+@media (max-width: 799px) { .parceiro > picture { justify-self: center; } .parceiro .pessoa__foto { margin-inline: auto; } }
+
+/* --- Rodada 19 --- */
+/* a) cinco animais: o último (que sobra sozinho) fica centralizado */
+@media (max-width: 639px) {
+  .ar-animais .ar-animal:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - var(--e-4) / 2); }
+}
+@media (min-width: 640px) and (max-width: 999px) {
+  .ar-animais { grid-template-columns: repeat(6, 1fr); }
+  .ar-animais .ar-animal { grid-column: span 2; }
+  .ar-animais .ar-animal:nth-child(4) { grid-column: 2 / span 2; }
+}
+/* b) "Ainda não tem o livro?": selo abaixo do botão (não cobre mais o texto) e botão centralizado no celular */
+.app-comprar .selo-campanha { top: calc(100% - 12px); right: -8px; font-size: .74rem; padding: .48em .78em .44em; }
+.campanha-ativa .app-comprar .botao-compra { margin-bottom: 34px; }
+@media (max-width: 759px) {
+  .app-comprar { justify-items: center; text-align: center; }
+  .app-comprar__livro { justify-self: center; }
+  .app-comprar .botao-compra { justify-self: center; }
+}
+/* c) iguana de "Em breve novos jogos": mais para baixo no celular, fora do botão */
+@media (max-width: 899px) {
+  .vem-secao { padding-bottom: calc(var(--secao-y) + clamp(130px, 38vw, 200px)); }
+  .vem__iguana { bottom: calc(var(--secao-y) * -1 - clamp(40px, 12vw, 70px)); }
+}
+/* d) "Fale com a gente": botão centralizado no celular */
+@media (max-width: 899px) { .fechamento .acoes { justify-content: center; } }

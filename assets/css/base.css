@@ -166,6 +166,19 @@ a:hover { text-decoration-thickness: 3px; }
   .topo__menu .topo__sub-lista .topo__sub-pagina { color: var(--lima); font-weight: 800; margin-bottom: 6px; border-bottom: 1px solid rgba(203, 148, 255, .25); border-radius: 8px 8px 0 0; }
   .topo__menu .topo__sub-lista a[aria-current="page"]::after { display: none; }
 }
+/* menu do celular: o item abre a lista de blocos logo abaixo (sanfona) */
+@media (max-width: 1023px) {
+  .topo__menu.aberto .topo__item-sub > a { justify-content: space-between; align-items: center; gap: 10px; }
+  .topo__menu.aberto .topo__seta { display: inline-block; width: 20px; height: 20px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; opacity: .8; transition: transform var(--dur-media) var(--curva); }
+  .topo__menu.aberto .topo__item-sub.sub-aberto > a { color: var(--aqua); }
+  .topo__menu.aberto .topo__item-sub.sub-aberto .topo__seta { transform: rotate(180deg); opacity: 1; }
+  .topo__menu.aberto .topo__item-sub.sub-aberto > .topo__sub { display: block; animation: sub-entra var(--dur-media) var(--curva); }
+  .topo__menu.aberto .topo__sub-lista { list-style: none; margin: 0 0 var(--e-3); padding: 4px 0 6px 14px; border-left: 2px solid rgba(49, 245, 255, .35); }
+  .topo__menu.aberto .topo__sub-lista li + li { border-top: 0; }
+  .topo__menu.aberto .topo__sub-lista a { min-height: 46px; font-size: 1.05rem; font-weight: 600; color: var(--branco); }
+  .topo__menu.aberto .topo__sub-lista .topo__sub-pagina { color: var(--lima); font-weight: 800; }
+  .topo__menu.aberto .topo__sub-lista a[aria-current="page"]::after { display: none; }
+}
 @keyframes sub-entra { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .topo__item-sub.sub-aberto > .topo__sub { animation: none; } .topo__seta { transition: none; } }
 

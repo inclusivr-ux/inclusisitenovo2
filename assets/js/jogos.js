@@ -72,14 +72,14 @@
      1. MEMÓRIA DAS RUNAS — forme pares: letra ou animal + o sinal certo
      ========================================================================= */
   function memoria(raizJogo) {
-    var modo = 'vogais';
+    var modo = 'todas';
     var cartas = [], abertas = [], pares = 0, jogadas = 0, travado = false;
     raizJogo.innerHTML =
       '<div class="jogo">' +
       '<div class="jogo__topo"><div class="acoes" role="group" aria-label="Escolha as cartas">' +
-      '<button type="button" class="abas__aba" data-modo="vogais" aria-pressed="true">Vogais</button>' +
-      '<button type="button" class="abas__aba" data-modo="animais" aria-pressed="false">Animais</button>' +
-      '<button type="button" class="abas__aba" data-modo="todas" aria-pressed="false">Todas</button></div>' +
+      '<button type="button" class="abas__aba" data-modo="todas" aria-pressed="true">Todas</button>' +
+      '<button type="button" class="abas__aba" data-modo="vogais" aria-pressed="false">Vogais</button>' +
+      '<button type="button" class="abas__aba" data-modo="animais" aria-pressed="false">Animais</button></div>' +
       '<p class="jogo__placar"><span data-pares>0</span> de <span data-total>5</span> pares · <span data-jogadas>0</span> jogadas</p></div>' +
       '<p class="jogo__retorno" data-retorno><span></span></p>' +
       '<div class="memoria" data-tabuleiro></div>' +
