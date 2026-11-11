@@ -1729,3 +1729,15 @@ ul.vr-projeto__lista { list-style: none; margin: var(--e-5) 0 0; padding: 0; dis
 }
 /* d) "Fale com a gente": botão centralizado no celular */
 @media (max-width: 899px) { .fechamento .acoes { justify-content: center; } }
+
+/* --- Rodada 20 --- */
+/* com a Maga Aia 3D aberta ao lado (computador), a página fica mais estreita: título menor, primeiro bloco mais bem distribuído e menu em uma linha */
+@media (min-width: 1024px) {
+  html.ivl-ativo .hero { padding-block: clamp(1.75rem, 1rem + 2.5vw, 3rem) clamp(2.25rem, 1.5rem + 2.5vw, 3.5rem); }
+  html.ivl-ativo .hero__grade { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: var(--e-6); }
+  html.ivl-ativo .hero__texto h1 { max-width: 24ch; font-size: clamp(1.75rem, .7rem + 2.1vw, 2.5rem); line-height: 1.1; }
+  html.ivl-ativo .hero__apoio { max-width: 30rem; font-size: 1rem; margin-top: var(--e-4); }
+  html.ivl-ativo .hero__acoes { margin-top: var(--e-5); }
+  html.ivl-ativo .topo__menu a, html.ivl-ativo .topo__menu a span { white-space: nowrap; }
+  html.ivl-ativo .topo__marca img { height: 40px; }
+}
