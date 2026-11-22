@@ -22,7 +22,7 @@
 .hero__grade { position: relative; z-index: 1; display: grid; gap: clamp(2rem, 1rem + 3vw, 3rem); align-items: center; }
 @media (min-width: 960px) { .hero__grade { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); } }
 .hero__texto h1 { max-width: 17ch; font-size: clamp(2rem, 1.25rem + 3vw, 3.5rem); line-height: 1.08; }
-.hero__apoio { margin-top: var(--e-5); max-width: 34rem; font-size: var(--t-sub); line-height: 1.5; }
+.hero__apoio { text-wrap: pretty; margin-top: var(--e-5); max-width: 38rem; font-size: var(--t-sub); line-height: 1.5; }
 .hero__acoes { margin-top: var(--e-7); }
 /* com a campanha, o selo do botão Comprar precisa de espaço em cima */
 .campanha-ativa .acoes:has(> .botao-compra:not(.botao--sm):not(.botao--selo-curto):not(.botao--selo-abaixo)) { padding-top: 30px; }
@@ -37,21 +37,21 @@
 .hud path.desenha { stroke-dasharray: var(--comp, 2000); stroke-dashoffset: var(--comp, 2000); animation: hud-desenha 1.4s var(--curva) 200ms forwards; }
 @keyframes hud-desenha { to { stroke-dashoffset: 0; } }
 
-/* No celular: título, depois o desenho do topo, depois o texto e os botões (assim o desenho aparece logo na entrada) */
+/* No celular: título, texto de apoio, desenho do topo e, por fim, os botões */
 @media (max-width: 959px) {
   .hero__grade { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
   .hero__texto { display: contents; }
   .hero__texto h1 { order: 1; }
-  .hero__visual { order: 2; margin-top: var(--e-6); }
-  .hero__apoio { order: 3; margin-top: var(--e-6); }
-  .hero__acoes { order: 4; }
+  .hero__apoio { order: 2; margin-top: var(--e-4); }
+  .hero__visual { order: 3; margin-top: var(--e-6); }
+  .hero__acoes { order: 4; margin-top: var(--e-6); }
   .hero__extra { order: 5; }
 }
 
 /* ---------- Topo: a mão da InclusiVR em holograma, com o Seu Zé e a Maga Aia ----------
    A mão 3D é um render do topo do site anterior (mesmo modelo, cores e luzes), agora parada.
    Seu Zé (livro, p. 9) e Maga Aia (livro, p. 13): recortes dos desenhos do Igor, sem filtro de cor. */
-.holo { position: relative; margin: 0 auto; width: min(100%, 520px); padding-bottom: 30px; }
+.holo { position: relative; margin: 0 auto; width: min(100%, 520px); }
 .holo__palco { position: relative; aspect-ratio: 1000 / 1040; }
 .holo__palco > * { position: absolute; }
 .holo__palco img { display: block; width: 100%; height: auto; }
@@ -77,9 +77,6 @@
 /* Aia sem sombra nem contorno: só a luz roxa do halo ao fundo */
 .holo__aia { z-index: 2; right: -5%; bottom: 0; width: 52%; filter: drop-shadow(0 12px 18px rgba(0, 0, 0, .45)); -webkit-mask-image: linear-gradient(#000 86%, transparent); mask-image: linear-gradient(#000 86%, transparent); }
 .holo__faiscas { z-index: 3; left: 12%; top: 6%; width: 76%; height: 76%; }
-.holo__legenda { position: absolute; z-index: 4; left: 50%; bottom: 0; transform: translateX(-50%) rotate(-1.5deg); width: max-content; max-width: 96%; font-size: clamp(.8rem, .74rem + .3vw, .95rem); padding: 12px 22px; }
-.holo__legenda { text-wrap: balance; }
-@media (max-width: 379px) { .holo__legenda { padding: 10px 14px; } }
 @media (max-width: 959px) { .holo { width: min(100%, 420px); } }
 @media (max-width: 479px) { .holo__ze { left: 1%; } .holo__aia { right: -2%; } }
 
@@ -1553,12 +1550,11 @@ ul.vr-projeto__lista { list-style: none; margin: var(--e-5) 0 0; padding: 0; dis
 .topo__marca:hover img, .topo__marca:focus-visible img { filter: drop-shadow(0 0 3px rgba(255, 255, 255, .85)) drop-shadow(0 0 10px rgba(49, 245, 255, .95)) drop-shadow(0 0 24px rgba(49, 245, 255, .7)); }
 
 /* tudo o que cresce ao passar o mouse usa a propriedade "scale", que soma com os "transform" que cada peça já tem */
-.holo__legenda, .preco--oferta, .campanha-livro, .placa-campanha, .logos__item, .parceiros li, .futuro__item, .carrossel, .salto,
+.preco--oferta, .campanha-livro, .placa-campanha, .logos__item, .parceiros li, .futuro__item, .carrossel, .salto,
 .dentro__imagem, .dentro__imagem .placa, .parceiro .pessoa__foto, .escolas .portal, .funcao, .clipe, .ar-explica__video, .app-comprar,
 .problema-lei, .pessoa, .insta__grade li, .post-cartao {
   transition: scale var(--dur-media) var(--curva), transform var(--dur-media) var(--curva), box-shadow var(--dur-media) var(--curva), filter var(--dur-media) var(--curva);
 }
-.holo__legenda:hover { scale: 1.08; }
 .preco--oferta:hover { scale: 1.04; }
 .campanha-livro:hover { scale: 1.03; }
 .placa-campanha:hover { scale: 1.06; }
@@ -1582,8 +1578,8 @@ ul.vr-projeto__lista { list-style: none; margin: var(--e-5) 0 0; padding: 0; dis
 .logos__item:hover, .parceiros li:hover, .futuro__item:hover, .carrossel:hover, .dentro__imagem:hover, .parceiro .pessoa__foto:hover, .funcao:hover,
 .clipe:hover, .ar-explica__video:hover, .app-comprar:hover, .problema-lei:hover, .pessoa:hover, .insta__grade li:hover, .post-cartao:hover,
 .preco--oferta:hover, .campanha-livro:hover, .placa-campanha:hover { position: relative; z-index: 6; }
-.dentro__imagem .placa:hover, .holo__legenda:hover { z-index: 7; }
-@media (prefers-reduced-motion: reduce) { .holo__legenda, .preco--oferta, .campanha-livro, .placa-campanha, .logos__item, .parceiros li, .futuro__item, .carrossel, .salto, .dentro__imagem, .dentro__imagem .placa, .parceiro .pessoa__foto, .escolas .portal, .funcao, .clipe, .ar-explica__video, .app-comprar, .problema-lei, .pessoa, .insta__grade li, .post-cartao { transition: none; } }
+.dentro__imagem .placa:hover { z-index: 7; }
+@media (prefers-reduced-motion: reduce) { .preco--oferta, .campanha-livro, .placa-campanha, .logos__item, .parceiros li, .futuro__item, .carrossel, .salto, .dentro__imagem, .dentro__imagem .placa, .parceiro .pessoa__foto, .escolas .portal, .funcao, .clipe, .ar-explica__video, .app-comprar, .problema-lei, .pessoa, .insta__grade li, .post-cartao { transition: none; } }
 .sem-movimento .logos__item, .sem-movimento .parceiros li, .sem-movimento .futuro__item, .sem-movimento .carrossel, .sem-movimento .salto, .sem-movimento .funcao, .sem-movimento .pessoa, .sem-movimento .post-cartao { transition: none; }
 
 /* parceiros viram cartões (como os quadrados das logos) */
@@ -1693,8 +1689,6 @@ ul.vr-projeto__lista { list-style: none; margin: var(--e-5) 0 0; padding: 0; dis
 .sem-movimento .cena-signaria__cidade:hover .cidade-brilhos i { animation: none; opacity: .85; }
 
 /* --- Rodada 18 --- */
-/* a) placa "uma história construída por muitas mãos": cresce a partir do centro (o "scale" separado desviava a placa, que usa translateX(-50%)) */
-.holo__legenda:hover { scale: 1; transform: translateX(-50%) rotate(-1.5deg) scale(1.08); }
 /* b) a abelha fica sempre na frente de tudo o que cresce ao passar o mouse */
 .passeio-abelha, .voo-abelha { z-index: 30; }
 /* d) cartas do leque em "Sem celular, em casa": mantêm a proporção (a regra dos quadrados achatava as cartas) */

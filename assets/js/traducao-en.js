@@ -32,7 +32,7 @@
     "IGOR": "IGOR",
     "Comprar": "Buy",
     "Conectando mundos por meio das línguas de sinais e tecnologia": "Connecting worlds through sign languages and technology",
-    "A InclusiVR cria livros, apps e jogos para aprender a Língua Brasileira de Sinais (LIBRAS) brincando, em Signária, a cidade onde todos sinalizam.": "InclusiVR creates books, apps and games for learning Brazilian Sign Language (LIBRAS) through play, in Signária, the city where everyone signs.",
+    "Ecossistema de soluções para disseminação da Libras de forma lúdica e inovadora.": "An ecosystem of solutions to spread LIBRAS in a playful and innovative way.",
     "Livro SinalizaAção": "SinalizaAção book",
     "Conheça a InclusiVR": "Meet InclusiVR",
     "Já tem o livro?": "Already have the book?",
