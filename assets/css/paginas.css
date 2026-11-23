@@ -44,8 +44,9 @@
   .hero__texto h1 { order: 1; }
   .hero__apoio { order: 2; margin-top: var(--e-4); }
   .hero__visual { order: 3; margin-top: var(--e-6); }
-  .hero__acoes { order: 4; margin-top: var(--e-6); }
-  .hero__extra { order: 5; }
+  .hero__preco { order: 4; margin-top: var(--e-6); }
+  .hero__acoes { order: 5; margin-top: var(--e-3); }
+  .hero__extra { order: 6; }
 }
 
 /* ---------- Topo: a mão da InclusiVR em holograma, com o Seu Zé e a Maga Aia ----------
@@ -1735,3 +1736,23 @@ ul.vr-projeto__lista { list-style: none; margin: var(--e-5) 0 0; padding: 0; dis
   html.ivl-ativo .topo__menu a, html.ivl-ativo .topo__menu a span { white-space: nowrap; }
   html.ivl-ativo .topo__marca img { height: 40px; }
 }
+
+/* Rodada 27: página do livro (sinalizaacao), mobile: título, subtítulo, idade, imagem, quadro de oferta e botões */
+@media (max-width: 899px) {
+  .livro-abertura .abertura__grade { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+  .livro-abertura .abertura__texto { display: contents; }
+  .livro-abertura .abertura__texto > * { margin-top: 0; }
+  .livro-abertura .livro-abertura__serie { order: 1; }
+  .livro-abertura .abertura__texto h1 { order: 2; margin-top: var(--e-4); }
+  .livro-abertura .abertura__texto .lead { order: 3; margin-top: var(--e-4); }
+  .livro-abertura .abertura__texto .idade { order: 4; margin-top: var(--e-4); }
+  .livro-abertura .abertura__visual { order: 5; margin-top: var(--e-6); }
+  .livro-abertura .abertura__texto .preco { order: 6; margin-top: var(--e-6); }
+  .livro-abertura .abertura__texto .acoes { order: 7; margin-top: var(--e-5); }
+  .livro-abertura .abertura__texto .libras-vaga { order: 8; }
+}
+
+/* Rodada 28: quadro Black November também no primeiro bloco da página inicial, abaixo do texto de apoio. */
+.hero__preco { margin-top: var(--e-5); }
+@media (min-width: 521px) { .campanha-ativa .hero__preco { padding-right: 140px; } }
+@media (min-width: 900px) { .hero__preco { max-width: 30rem; } }
