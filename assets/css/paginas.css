@@ -44,9 +44,8 @@
   .hero__texto h1 { order: 1; }
   .hero__apoio { order: 2; margin-top: var(--e-4); }
   .hero__visual { order: 3; margin-top: var(--e-6); }
-  .hero__preco { order: 4; margin-top: var(--e-6); }
-  .hero__acoes { order: 5; margin-top: var(--e-3); }
-  .hero__extra { order: 6; }
+  .hero__acoes { order: 4; margin-top: var(--e-6); }
+  .hero__extra { order: 5; }
 }
 
 /* ---------- Topo: a mão da InclusiVR em holograma, com o Seu Zé e a Maga Aia ----------
@@ -1752,7 +1751,12 @@ ul.vr-projeto__lista { list-style: none; margin: var(--e-5) 0 0; padding: 0; dis
   .livro-abertura .abertura__texto .libras-vaga { order: 8; }
 }
 
-/* Rodada 28: quadro Black November também no primeiro bloco da página inicial, abaixo do texto de apoio. */
-.hero__preco { margin-top: var(--e-5); }
-@media (min-width: 521px) { .campanha-ativa .hero__preco { padding-right: 140px; } }
-@media (min-width: 900px) { .hero__preco { max-width: 30rem; } }
+/* Rodada 29: título "Feito por muitas mãos" maior e em duas linhas equilibradas, subtítulo mais próximo e proporcional, para o bloco ficar harmônico com o texto curto. */
+.hero__texto h1 { max-width: 13ch; font-size: clamp(2.5rem, 1.2rem + 4.6vw, 4.75rem); line-height: 1.02; text-wrap: balance; }
+.hero__apoio { margin-top: var(--e-4); max-width: 27rem; font-size: clamp(1.15rem, 1rem + .7vw, 1.5rem); line-height: 1.45; text-wrap: balance; }
+.hero__texto .hero__acoes { margin-top: var(--e-7); }
+@media (max-width: 959px) {
+  .hero__texto h1 { max-width: none; }
+  .hero__apoio { max-width: 30rem; }
+}
+@media (min-width: 960px) and (max-width: 1279px) { .hero__texto h1 { font-size: clamp(2.5rem, 5.6vw, 4.75rem); } }
