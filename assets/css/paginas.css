@@ -1760,3 +1760,14 @@ ul.vr-projeto__lista { list-style: none; margin: var(--e-5) 0 0; padding: 0; dis
   .hero__apoio { max-width: 30rem; }
 }
 @media (min-width: 960px) and (max-width: 1279px) { .hero__texto h1 { font-size: clamp(2.5rem, 5.6vw, 4.75rem); } }
+
+/* Rodada 30: o subtítulo ocupa a mesma largura do título; os botões descem para perto do fim da imagem. */
+@media (min-width: 960px) {
+  .hero__texto { --hero-t: clamp(2.5rem, 1.2rem + 4.6vw, 4.75rem); }
+  .hero__texto h1 { font-size: var(--hero-t); }
+  .hero__apoio { max-width: calc(var(--hero-t) * 7.9); font-size: clamp(1.25rem, .9rem + 1vw, 1.7rem); text-wrap: pretty; }
+  .hero__texto .hero__acoes { margin-top: clamp(3.5rem, 2rem + 5vw, 6.5rem); }
+}
+@media (min-width: 960px) and (max-width: 1279px) {
+  .hero__texto { --hero-t: clamp(2.5rem, 5.6vw, 4.75rem); }
+}
