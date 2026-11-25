@@ -43,3 +43,16 @@ Options -Indexes
     Deny from all
   </IfModule>
 </FilesMatch>
+
+# Arquivos e pastas ocultos (.git, .htaccess.bk etc.) nunca vão para o público.
+# Só a .well-known fica liberada: o certificado HTTPS (AutoSSL) precisa dela.
+<IfModule mod_alias.c>
+  RedirectMatch 404 "/\.(?!well-known(/|$))"
+</IfModule>
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Defina o pacote “ea-php82” como a linguagem padrão de programação “PHP”.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php82___lsphp .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
