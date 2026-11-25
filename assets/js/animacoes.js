@@ -587,6 +587,17 @@
         if (!info) return;
         var novo = achados.indexOf(a) === -1;
         if (novo) { achados.push(a); guarda.gravar('inclusivr:animais', JSON.stringify(achados)); }
+        /* InclusiVR Analytics: a caça aos animais é uma partida que atravessa as páginas */
+        if (novo) {
+          try {
+            var A = window.InclusiVRAnalytics;
+            if (A && A.gameStart) {
+              A.gameStart('animais-escondidos');
+              A.gameProgress('animais-escondidos', { achados: achados.length });
+              if (achados.length >= ORDEM.length) A.gameComplete('animais-escondidos', { achados: achados.length });
+            }
+          } catch (er) { /* nunca atrapalha o jogo */ }
+        }
         b.classList.add('encontrado');
         rotular();
         IVR.faiscas(b, { quantidade: 10 });

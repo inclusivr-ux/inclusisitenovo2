@@ -12,6 +12,11 @@
   var raiz = IVR.raiz || '';
   var permitido = IVR.movimentoPermitido || function () { return true; };
   var faiscas = function (alvo, op) { if (IVR.faiscas) IVR.faiscas(alvo, op); };
+  /* InclusiVR Analytics: registra início, conclusão e abandono das partidas.
+     Se o analytics não carregar (ou estiver desligado), os jogos funcionam igual. */
+  function iva(metodo, jogo, dados) {
+    try { var A = window.InclusiVRAnalytics; if (A && typeof A[metodo] === 'function') A[metodo](jogo, dados); } catch (e) { /* nunca atrapalha o jogo */ }
+  }
 
   /* ---------- as cartas (frente = letra ou animal; verso = sinal) ---------- */
   var CARTAS = [
@@ -74,6 +79,7 @@
   function memoria(raizJogo) {
     var modo = 'todas';
     var cartas = [], abertas = [], pares = 0, jogadas = 0, travado = false;
+    var ID_JOGO = 'memoria-das-runas', emJogo = false;
     raizJogo.innerHTML =
       '<div class="jogo">' +
       '<div class="jogo__topo"><div class="acoes" role="group" aria-label="Escolha as cartas">' +
@@ -100,6 +106,8 @@
     }
     function montar() {
       var base = CARTAS.filter(function (c) { return modo === 'todas' || c.grupo === modo; });
+      /* embaralhar ou trocar as cartas no meio de uma partida = partida abandonada */
+      if (emJogo) { iva('gameExit', ID_JOGO, { motivo: 'reiniciou' }); emJogo = false; }
       cartas = [];
       base.forEach(function (c) {
         cartas.push({ id: c.id, face: 'frente', src: img(c.frente), alt: c.altFrente, descricao: c.grupo === 'vogais' ? 'letra ' + c.curto : 'desenho ' + (c.artigo === 'o' ? 'do ' : 'da ') + c.nome });
@@ -160,6 +168,7 @@
       var i = +b.getAttribute('data-i');
       var c = cartas[i];
       if (c.par || c.aberta) { anunciar(elAn, 'Esta carta já está virada.'); return; }
+      if (!emJogo) { emJogo = true; iva('gameStart', ID_JOGO); }
       virar(i);
       abertas.push(i);
       if (abertas.length === 1) { anunciar(elAn, 'Você virou: ' + c.descricao + '. Escolha outra carta.'); return; }
@@ -177,6 +186,7 @@
         abertas = [];
         var total = cartas.length / 2;
         if (pares === total) {
+          if (emJogo) { emJogo = false; iva('gameComplete', ID_JOGO, { jogadas: jogadas, pares: total, modo: modo }); }
           var fim = 'Você formou todos os pares em ' + jogadas + ' jogadas! Jogue de novo ou escolha outras cartas.';
           retorno(elRet, 'acerto', fim);
           anunciar(elAn, msg + ' ' + fim);
@@ -212,6 +222,7 @@
      ========================================================================= */
   function qual(raizJogo) {
     var rodadas = [], i = 0, acertos = 0, errou = false, resolvida = false;
+    var ID_JOGO = 'qual-e-o-sinal', emJogo = false;
     raizJogo.innerHTML =
       '<div class="jogo qual">' +
       '<div class="jogo__topo"><p class="jogo__placar">Rodada <span data-rodada>1</span> de <span data-total>10</span> · <span data-acertos>0</span> acertos de primeira</p></div>' +
@@ -225,6 +236,7 @@
     var elRet = raizJogo.querySelector('[data-retorno]'), elAn = raizJogo.querySelector('[data-anuncio]');
     var elOp = raizJogo.querySelector('[data-opcoes]'), btProx = raizJogo.querySelector('[data-proxima]'), btDeNovo = raizJogo.querySelector('[data-reiniciar]');
     function iniciar() {
+      if (emJogo) { iva('gameExit', ID_JOGO, { motivo: 'reiniciou' }); emJogo = false; }
       rodadas = embaralhar(CARTAS); i = 0; acertos = 0;
       raizJogo.querySelector('[data-total]').textContent = rodadas.length;
       btDeNovo.hidden = true;
@@ -259,6 +271,7 @@
     elOp.addEventListener('click', function (e) {
       var b = e.target.closest('.opcao-carta');
       if (!b || resolvida || b.getAttribute('data-estado') === 'errada') return;
+      if (!emJogo) { emJogo = true; iva('gameStart', ID_JOGO); }
       var alvo = rodadas[i];
       var escolhida = POR_ID[b.getAttribute('data-id')];
       if (escolhida.id === alvo.id) {
@@ -276,6 +289,7 @@
           btProx.focus();
         } else {
           var fim = 'Fim de jogo! Você acertou ' + acertos + ' de ' + rodadas.length + ' de primeira.';
+          if (emJogo) { emJogo = false; iva('gameComplete', ID_JOGO, { acertos: acertos, rodadas: rodadas.length }); }
           retorno(elRet, 'acerto', msg + ' ' + fim);
           anunciar(elAn, msg + ' ' + fim);
           btDeNovo.hidden = false;
@@ -310,6 +324,7 @@
   var VOGAIS = ['A', 'E', 'I', 'O', 'U'];
   function vogais(raizJogo) {
     var lista = [], p = 0, lacunas = [], atual = 0, completa = false;
+    var ID_JOGO = 'vogais-fugiram', emJogo = false;
     raizJogo.innerHTML =
       '<div class="jogo vogais">' +
       '<div class="jogo__topo"><p class="jogo__placar">Palavra <span data-num>1</span> de <span data-total>5</span></p>' +
@@ -354,6 +369,7 @@
       });
     });
     function iniciar() {
+      if (emJogo) { iva('gameExit', ID_JOGO, { motivo: 'reiniciou' }); emJogo = false; }
       lista = embaralhar(PALAVRAS); p = 0; btDeNovo.hidden = true;
       erros = 0; elAjuda.hidden = true;
       if (chkLetras.checked) { chkLetras.checked = false; chkLetras.dispatchEvent(new Event('change')); }
@@ -395,6 +411,7 @@
     elTec.addEventListener('click', function (e) {
       var b = e.target.closest('.opcao-carta');
       if (!b || completa) return;
+      if (!emJogo) { emJogo = true; iva('gameStart', ID_JOGO); }
       var w = lista[p].palavra;
       var letra = b.getAttribute('data-letra');
       var certa = w[lacunas[atual]];
@@ -408,7 +425,7 @@
           retorno(elRet, 'acerto', msg);
           faiscas(elPal, { quantidade: 18, espalhar: .8 });
           if (p < lista.length - 1) { btProx.hidden = false; anunciar(elAn, msg + ' Use o botão Próxima palavra.'); btProx.focus(); }
-          else { var fim = 'Você devolveu todas as vogais às palavras!'; retorno(elRet, 'acerto', msg + ' ' + fim); anunciar(elAn, msg + ' ' + fim); btDeNovo.hidden = false; btDeNovo.focus(); }
+          else { if (emJogo) { emJogo = false; iva('gameComplete', ID_JOGO, { palavras: lista.length }); } var fim = 'Você devolveu todas as vogais às palavras!'; retorno(elRet, 'acerto', msg + ' ' + fim); anunciar(elAn, msg + ' ' + fim); btDeNovo.hidden = false; btDeNovo.focus(); }
         } else {
           desenhar();
           var ok = 'Isso! A letra ' + letra + ' voltou para a palavra.';
