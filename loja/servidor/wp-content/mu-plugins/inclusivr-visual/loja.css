@@ -1,0 +1,298 @@
+/* InclusiVR Visual (loja) — a mesma identidade do site inclusivr.com.br.
+   Cores, fontes e botões copiados de assets/css/tokens.css e componentes.css do site.
+   Tudo vale só com a classe .ivl-visual no <body> (colocada pelo plugin). */
+
+@font-face { font-family: "Archivo Expanded"; src: url("fonts/ArchivoExpanded-Variable.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Outfit"; src: url("fonts/Outfit-Variable.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Lexend"; src: url("fonts/Lexend-Variable.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+
+.ivl-visual {
+  --noite: #100448; --indigo: #280eaa; --roxo-profundo: #5515a0; --roxo: #ac2fed; --lilas: #cb94ff;
+  --ciano: #15b0ff; --aqua: #31f5ff; --lima: #cfd736; --preto: #1a1a1a; --carvao: #444141; --branco: #fff;
+  --orquidea-nevoa: #f7eefe; --divisor: #e4e2ea; --campo-borda: #6b6878;
+  --brilho-aqua: 0 0 16px 2px #31f5ff80; --brilho-aqua-forte: 0 0 24px 5px #31f5ffa6;
+  --fonte-titulo: "Archivo Expanded", Archivo, sans-serif;
+  --fonte-rotulo: Outfit, sans-serif;
+  --fonte-texto: Lexend, system-ui, sans-serif;
+  font-family: var(--fonte-texto); color: var(--preto); background: var(--branco);
+  font-size: 17px; line-height: 1.6;
+}
+.ivl-visual, .ivl-visual p, .ivl-visual li, .ivl-visual input, .ivl-visual select, .ivl-visual textarea, .ivl-visual label,
+.ivl-visual button, .ivl-visual .button, .ivl-visual td, .ivl-visual th, .ivl-visual span { font-family: var(--fonte-texto); }
+.ivl-visual h1, .ivl-visual h2, .ivl-visual h3, .ivl-visual .product_title, .ivl-visual .woocommerce-products-header__title,
+.ivl-visual .woocommerce-loop-product__title {
+  font-family: var(--fonte-titulo); font-weight: 800; color: var(--preto); letter-spacing: 0; line-height: 1.15;
+}
+.ivl-visual a { color: var(--roxo-profundo); }
+.ivl-visual a:hover { color: var(--roxo); }
+.ivl-visual :focus-visible { outline: 3px solid var(--roxo); outline-offset: 3px; }
+.ivl-visual .screen-reader-text { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- faixa da campanha (topo) ---------- */
+.ivl-faixa { background: var(--preto); color: var(--branco); border-bottom: 2px solid var(--lima); }
+.ivl-faixa__dentro { max-width: 1200px; margin: 0 auto; padding: 10px 20px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 16px; text-align: center; }
+.ivl-faixa__selo { font-family: var(--fonte-rotulo) !important; font-weight: 800; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--preto); background: var(--lima); padding: 3px 10px; border-radius: 4px; }
+.ivl-visual .ivl-faixa__texto { margin: 0; font-size: .98rem; color: var(--branco); }
+.ivl-faixa__texto del { color: #d9d3e6; text-decoration-color: var(--lima); }
+.ivl-faixa__texto strong { color: var(--branco); }
+.ivl-visual .ivl-cupom, .ivl-faixa .ivl-cupom { font-family: var(--fonte-rotulo) !important; font-weight: 800; letter-spacing: .05em; color: var(--lima); }
+.ivl-visual a.ivl-faixa__botao { display: inline-flex; align-items: center; min-height: 40px; padding: 0 18px; border-radius: 9999px; background: var(--lima); color: var(--noite); font-weight: 700; font-size: .95rem; text-decoration: none; white-space: nowrap; }
+.ivl-visual a.ivl-faixa__botao:hover { color: var(--noite); box-shadow: var(--brilho-aqua); }
+
+/* ---------- cabeçalho ---------- */
+.ivl-visual header[role="banner"], .ivl-visual .home-page-header { border: 0 !important; }
+.ivl-visual .topbar { background: rgba(16, 4, 72, .97) !important; padding: 10px 0 !important; border: 0 !important; box-shadow: none !important; }
+.ivl-visual .topbar .logo { display: flex; align-items: center; justify-content: flex-start; }
+.ivl-visual .topbar .logo .site-title { margin: 0; line-height: 1; display: flex; align-items: center; gap: 10px; }
+.ivl-visual .topbar .logo .site-title a {
+  display: block; width: 175px; height: 48px; font-size: 0 !important; color: transparent !important;
+  background: url("img/inclusivr-branco-ciano-horizontal-180.webp") left center / contain no-repeat;
+}
+.ivl-visual .topbar .logo .site-title::after {
+  content: "Loja" / ""; font-family: var(--fonte-rotulo); font-weight: 800; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--noite); background: var(--lima); padding: 3px 9px; border-radius: 4px;
+}
+.ivl-visual .main-navigation ul#menu-menu-1, .ivl-visual .main-navigation .menu { background: transparent !important; border-radius: 0 !important; box-shadow: none !important; padding: 0 !important; }
+.ivl-visual .main-navigation .menu > li > a, .ivl-visual .main-navigation a {
+  color: var(--branco) !important; font-family: var(--fonte-texto) !important; font-weight: 600 !important; font-size: 1rem !important;
+  text-transform: none !important; background: transparent !important; position: relative; padding: 10px 12px !important;
+}
+.ivl-visual .main-navigation .menu > li > a:hover { color: var(--aqua) !important; }
+.ivl-visual .main-navigation .current-menu-item > a::after {
+  content: ""; position: absolute; left: 12px; right: 12px; bottom: 4px; height: 3px; border-radius: 3px; background: var(--lima);
+}
+.ivl-visual .main-navigation .ivl-menu-site > a { color: var(--lilas) !important; }
+.ivl-visual .main-navigation .ivl-menu-site > a::before { content: "\2190\00a0"; }
+.ivl-visual .myaccount-icon i, .ivl-visual .cart-no a i {
+  width: 44px; height: 44px; line-height: 40px !important; text-align: center; border-radius: 9999px !important;
+  background: transparent !important; color: var(--branco) !important; border: 2px solid rgba(255, 255, 255, .55); font-size: 17px;
+}
+.ivl-visual .myaccount-icon:hover i, .ivl-visual .cart-no a:hover i { border-color: var(--aqua); box-shadow: var(--brilho-aqua); }
+.ivl-visual .toggle-nav button, .ivl-visual .toggle-nav i {
+  background: transparent !important; color: var(--branco) !important; border-radius: 9999px !important;
+}
+.ivl-visual .toggle-nav button { border: 2px solid rgba(255, 255, 255, .55) !important; width: 46px; height: 44px; }
+.ivl-visual .sidenav { background: var(--noite) !important; }
+.ivl-visual .sidenav .closebtn, .ivl-visual .sidenav .closebtn i { color: var(--branco) !important; }
+
+/* faixa com a arte do livro (abaixo do cabeçalho) */
+.ivl-visual .box-image { border-bottom: 2px solid var(--lima); }
+
+/* ---------- títulos e textos das páginas ---------- */
+.ivl-visual .woocommerce-products-header__title, .ivl-visual h1.page-title { font-size: clamp(1.9rem, 1.4rem + 2vw, 2.75rem); margin: 0 0 8px; }
+.ivl-visual .woocommerce-result-count { color: var(--carvao); }
+.ivl-visual select, .ivl-visual input[type="text"], .ivl-visual input[type="email"], .ivl-visual input[type="tel"], .ivl-visual input[type="number"],
+.ivl-visual input[type="password"], .ivl-visual textarea, .ivl-visual .select2-container .select2-selection {
+  border: 2px solid var(--campo-borda) !important; border-radius: 10px !important; background: var(--branco); color: var(--preto); min-height: 44px;
+}
+.ivl-visual input:focus, .ivl-visual select:focus, .ivl-visual textarea:focus { border-color: var(--roxo) !important; outline: none; box-shadow: 0 0 0 3px #ac2fed33; }
+
+/* ---------- botões (pílula roxa com brilho aqua, como no site) ---------- */
+.ivl-visual .woocommerce a.button, .ivl-visual .woocommerce button.button, .ivl-visual .woocommerce input.button,
+.ivl-visual .woocommerce a.button.alt, .ivl-visual .woocommerce button.button.alt, .ivl-visual .woocommerce #respond input#submit,
+.ivl-visual a.button, .ivl-visual button.button, .ivl-visual .wc-block-components-button:not(.is-link),
+.ivl-visual #place_order, .ivl-visual .checkout-button, .ivl-visual .woocommerce a.added_to_cart.wc-forward {
+  background: var(--roxo) !important; color: var(--branco) !important; border: 0 !important; border-radius: 9999px !important;
+  font-family: var(--fonte-texto) !important; font-weight: 700 !important; font-size: 1.0625rem !important; text-transform: none !important;
+  letter-spacing: 0 !important; min-height: 50px; padding: .7em 1.6em !important; box-shadow: var(--brilho-aqua) !important;
+  transition: transform .16s, box-shadow .16s, scale .16s; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2 !important;
+}
+.ivl-visual .woocommerce a.button:hover, .ivl-visual .woocommerce button.button:hover, .ivl-visual a.button:hover, .ivl-visual button.button:hover,
+.ivl-visual #place_order:hover, .ivl-visual .checkout-button:hover {
+  background: var(--roxo) !important; color: var(--branco) !important; box-shadow: var(--brilho-aqua-forte) !important; scale: 1.04;
+}
+.ivl-visual .woocommerce button.button:disabled, .ivl-visual .woocommerce button.button:disabled[disabled] { opacity: .55; box-shadow: none !important; scale: 1; }
+/* botões secundários: contorno */
+.ivl-visual .woocommerce .cart button[name="update_cart"], .ivl-visual .woocommerce .coupon button.button {
+  background: transparent !important; color: var(--roxo-profundo) !important; box-shadow: inset 0 0 0 2px currentColor !important;
+}
+
+/* ---------- vitrine ---------- */
+.ivl-visual .woocommerce ul.products li.product, .ivl-visual ul.products li.product {
+  background: var(--branco); border: 0 !important; border-radius: 14px !important; padding: 18px 18px 24px !important;
+  box-shadow: 0 0 0 2px var(--divisor), 0 14px 28px rgba(16, 4, 72, .10) !important; text-align: center; transition: scale .16s, box-shadow .16s;
+}
+.ivl-visual ul.products li.product:hover { scale: 1.02; box-shadow: 0 0 0 2px var(--roxo), var(--brilho-aqua) !important; }
+.ivl-visual ul.products li.product img { border-radius: 10px; }
+.ivl-visual ul.products li.product .woocommerce-loop-product__title { font-size: 1.15rem !important; padding: 14px 0 6px !important; }
+.ivl-visual ul.products li.product .price { color: var(--carvao) !important; font-weight: 600; font-size: 1rem !important; }
+.ivl-visual .ivl-etiqueta {
+  display: inline-block; margin: 2px 0 14px; padding: 6px 12px; border-radius: 8px; background: var(--preto); color: var(--branco);
+  font-weight: 700; font-size: .95rem; box-shadow: 0 0 0 2px var(--lima);
+}
+.ivl-visual .ivl-etiqueta strong { font-family: var(--fonte-rotulo); font-weight: 800; letter-spacing: .05em; color: var(--lima); }
+
+/* ---------- página do livro ---------- */
+.ivl-visual .product_title { font-size: clamp(1.7rem, 1.3rem + 1.6vw, 2.5rem) !important; margin-bottom: 12px !important; }
+.ivl-visual .summary .price { color: var(--preto) !important; font-weight: 700; font-size: 1.4rem !important; }
+.ivl-campanha .summary > p.price:has(~ .ivl-oferta) { display: none; }
+.ivl-visual .woocommerce div.product .woocommerce-product-gallery__image img { border-radius: 14px; }
+.ivl-visual .woocommerce div.product form.cart { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 18px 0 !important; }
+.ivl-visual .woocommerce div.product form.cart .quantity { margin: 0 !important; }
+.ivl-visual .woocommerce div.product form.cart .qty { width: 80px; min-height: 50px; }
+.ivl-visual .product_meta { color: var(--carvao); font-size: .95rem; }
+.ivl-visual .product_meta a { color: var(--roxo-profundo) !important; }
+.ivl-visual div.product .woocommerce-tabs ul.tabs { padding: 0 !important; margin-bottom: 18px !important; }
+.ivl-visual div.product .woocommerce-tabs ul.tabs::before { border-color: var(--divisor) !important; }
+.ivl-visual div.product .woocommerce-tabs ul.tabs li { background: transparent !important; border: 0 !important; border-radius: 0 !important; margin: 0 6px 0 0 !important; }
+.ivl-visual div.product .woocommerce-tabs ul.tabs li::before, .ivl-visual div.product .woocommerce-tabs ul.tabs li::after { display: none !important; }
+.ivl-visual div.product .woocommerce-tabs ul.tabs li a { color: var(--carvao) !important; font-weight: 700 !important; padding: 10px 12px !important; }
+.ivl-visual div.product .woocommerce-tabs ul.tabs li.active a { color: var(--roxo-profundo) !important; box-shadow: inset 0 -3px 0 var(--lima); }
+.ivl-visual div.product .woocommerce-tabs .panel { color: var(--preto); }
+.ivl-visual div.product .woocommerce-tabs .panel p { color: var(--carvao); }
+
+/* bloco da campanha (igual ao "preço de oferta" do site) */
+.ivl-oferta {
+  display: grid; justify-items: start; gap: 8px; width: fit-content; max-width: 100%; box-sizing: border-box;
+  margin: 6px 0 22px; padding: 16px 22px 20px; border-radius: 10px; background: var(--preto); color: var(--branco);
+  box-shadow: 0 0 0 2px var(--lima), 0 14px 28px rgba(16, 4, 72, .3);
+}
+.ivl-visual .ivl-oferta p { margin: 0; color: var(--branco); }
+.ivl-visual .ivl-oferta .ivl-oferta__selo { font-family: var(--fonte-rotulo); font-weight: 800; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--lima); }
+.ivl-oferta__preco { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
+.ivl-oferta__preco del { font-size: 1.1rem; font-weight: 600; color: #e4def0; text-decoration-color: var(--lima); }
+.ivl-visual .ivl-oferta__por { font-family: var(--fonte-titulo); font-weight: 800; font-size: clamp(2rem, 1.5rem + 1.6vw, 2.6rem); line-height: 1; color: var(--branco); }
+.ivl-visual .ivl-oferta__com { font-weight: 700; color: var(--branco); }
+.ivl-visual .ivl-oferta .ivl-cupom { display: inline-block; padding: 1px 9px; border-radius: 4px; background: var(--lima); color: var(--noite); }
+.ivl-visual .ivl-oferta .ivl-oferta__nota { font-size: .9rem; line-height: 1.5; color: #d9d3e6; max-width: 34rem; }
+.ivl-visual .ivl-oferta .ivl-oferta__brinde { font-size: .9rem; font-weight: 600; color: var(--lima); }
+
+/* botão lima (segunda ação, não compete com o roxo) */
+.ivl-visual a.ivl-botao {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: .6em 1.5em; margin-top: 6px;
+  border-radius: 9999px; background: var(--lima); color: var(--noite); font-weight: 700; font-size: 1.0625rem; text-decoration: none;
+  transition: scale .16s, box-shadow .16s;
+}
+.ivl-visual a.ivl-botao:hover { color: var(--noite); scale: 1.04; box-shadow: var(--brilho-aqua); }
+.ivl-visual a.ivl-botao--sm { min-height: 44px; font-size: 1rem; margin: 0; }
+
+/* lembrete no carrinho e na finalização */
+.ivl-lembrete {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px;
+  margin: 0 0 24px; padding: 14px 20px; border-radius: 10px; background: var(--preto); box-shadow: 0 0 0 2px var(--lima);
+}
+.ivl-visual .ivl-lembrete p { margin: 0; color: var(--branco); }
+.ivl-visual .ivl-lembrete strong { color: var(--branco); }
+.ivl-visual .ivl-lembrete .ivl-cupom { color: var(--lima); }
+.ivl-lembrete__selo { font-family: var(--fonte-rotulo); font-weight: 800; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--preto); background: var(--lima); padding: 3px 9px; border-radius: 4px; margin-right: 8px; }
+.ivl-lembrete--ok { background: #e2f4cd; box-shadow: 0 0 0 2px #42b23c; }
+.ivl-visual .ivl-lembrete--ok p, .ivl-visual .ivl-lembrete--ok strong { color: #231f20; }
+
+/* avisos do WooCommerce */
+.ivl-visual .woocommerce-message, .ivl-visual .woocommerce-info, .ivl-visual .woocommerce-error {
+  border-top: 0 !important; border-left: 0 !important; border-radius: 10px; background: var(--orquidea-nevoa) !important; color: var(--preto) !important;
+  box-shadow: 0 0 0 2px #e3d3f3;
+}
+.ivl-visual .woocommerce-message::before, .ivl-visual .woocommerce-info::before { color: var(--roxo-profundo) !important; }
+.ivl-visual .woocommerce-error { background: #fff0f2 !important; box-shadow: 0 0 0 2px #b1102c; }
+.ivl-visual .woocommerce-error::before { color: #b1102c !important; }
+
+/* carrinho */
+.ivl-visual .woocommerce table.shop_table { border-radius: 14px !important; border: 2px solid var(--divisor) !important; border-collapse: separate; overflow: hidden; }
+.ivl-visual .woocommerce table.shop_table th { font-weight: 700; color: var(--preto); }
+.ivl-visual .woocommerce-cart .cart-collaterals h2, .ivl-visual .woocommerce-checkout h3 { font-size: 1.4rem; }
+.ivl-visual .woocommerce a.remove { color: #b1102c !important; }
+.ivl-visual .woocommerce a.remove:hover { background: #b1102c !important; color: #fff !important; }
+
+/* ---------- rodapé ---------- */
+.ivl-visual footer[role="contentinfo"] .copyright > p { display: none !important; }
+.ivl-visual footer[role="contentinfo"] .footer, .ivl-visual #footer-2 { background: var(--noite) !important; padding: 0 !important; }
+.ivl-visual .scrollup i { background: var(--roxo) !important; color: var(--branco) !important; border-radius: 9999px !important; box-shadow: var(--brilho-aqua); }
+.ivl-rodape { background: var(--noite); color: var(--branco); }
+.ivl-rodape__dentro { max-width: 1200px; margin: 0 auto; padding: 48px 24px 28px; display: grid; gap: 32px; grid-template-columns: 1fr; }
+@media (min-width: 760px) { .ivl-rodape__dentro { grid-template-columns: 1.4fr 1fr 1fr 1.2fr; padding-top: 56px; } }
+.ivl-rodape__marca img { width: 218px; height: auto; display: block; }
+.ivl-visual .ivl-rodape__marca p { margin: 14px 0 0; font-family: var(--fonte-titulo); font-weight: 800; font-size: 1.05rem; line-height: 1.3; color: var(--branco); max-width: 18rem; }
+.ivl-visual .ivl-rodape__titulo { margin: 0 0 10px; font-family: var(--fonte-rotulo); font-weight: 800; color: var(--lilas); font-size: 1rem; }
+.ivl-rodape ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.ivl-visual .ivl-rodape a { color: var(--branco); text-decoration: none; }
+.ivl-visual .ivl-rodape a:hover { color: var(--aqua); text-decoration: underline; }
+.ivl-rodape__base { max-width: 1200px; margin: 0 auto; padding: 18px 24px 26px; border-top: 1px solid #3a2a86; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; }
+.ivl-visual .ivl-rodape__base p { margin: 0; font-size: .875rem; color: var(--lilas); }
+
+/* ---------- celular ---------- */
+@media (max-width: 767px) {
+  .ivl-visual .topbar .logo { justify-content: center; }
+  .ivl-visual .topbar .logo .site-title a { width: 150px; height: 42px; }
+  .ivl-visual .box-image .single-page-img { min-height: 0 !important; }
+  .ivl-faixa__dentro { padding: 10px 16px; }
+  .ivl-visual .ivl-faixa__texto { font-size: .9rem; }
+  .ivl-oferta { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) { .ivl-visual * { transition: none !important; } }
+
+/* ---------- ajustes finais ---------- */
+html:has(body.ivl-visual) { padding: 0 !important; margin: 0 !important; }
+body.ivl-visual { width: auto !important; max-width: none !important; margin: 0 !important; padding: 0 !important; }
+.ivl-visual div.product .woocommerce-tabs ul.tabs { border: 0 !important; background: transparent !important; }
+.ivl-visual div.product .woocommerce-tabs ul.tabs li { background: transparent !important; border: 0 !important; box-shadow: none !important; }
+.ivl-visual div.product .woocommerce-tabs ul.tabs li a { font-family: var(--fonte-texto) !important; }
+.ivl-visual div.product .woocommerce-tabs .panel, .ivl-visual div.product .woocommerce-tabs .panel p,
+.ivl-visual div.product .woocommerce-tabs .panel li, .ivl-visual div.product .woocommerce-tabs .panel td,
+.ivl-visual div.product .woocommerce-tabs .panel th { color: var(--carvao) !important; }
+.ivl-visual div.product .woocommerce-tabs .panel { background: transparent !important; border: 0 !important; padding: 8px 0 0 !important; }
+.ivl-visual .toggle-nav, .ivl-visual .toggle-nav button, .ivl-visual .toggle-nav a,
+.ivl-visual .toggle-nav i, .ivl-visual .toggle-nav span { background: transparent !important; background-color: transparent !important; box-shadow: none !important; color: var(--branco) !important; }
+.ivl-visual .toggle-nav button { border: 2px solid rgba(255, 255, 255, .55) !important; }
+@media (max-width: 767px) {
+  .ivl-visual .box-image img { max-height: 190px; object-fit: cover; width: 100%; }
+}
+.ivl-visual .menu-section { background: transparent !important; box-shadow: none !important; }
+
+/* ---------- galeria do produto (carrossel) ---------- */
+.ivl-visual .woocommerce-product-gallery { position: relative; }
+.ivl-visual .woocommerce-product-gallery .flex-viewport { border-radius: 16px; }
+.ivl-visual .woocommerce-product-gallery .flex-direction-nav { list-style: none; margin: 0; padding: 0; }
+.ivl-visual .woocommerce-product-gallery .flex-direction-nav a {
+  position: absolute; top: calc((100% - 96px) / 2 - 22px); z-index: 5; width: 44px; height: 44px; margin-top: 0; border-radius: 9999px;
+  background: rgba(16, 4, 72, .85); color: transparent !important; font-size: 0; overflow: hidden; text-decoration: none;
+  display: flex; align-items: center; justify-content: center; opacity: 1;
+}
+.ivl-visual .woocommerce-product-gallery .flex-direction-nav a::before { font-size: 28px; line-height: 1; color: var(--branco); font-family: var(--fonte-texto); }
+.ivl-visual .woocommerce-product-gallery .flex-direction-nav .flex-prev { left: 12px; }
+.ivl-visual .woocommerce-product-gallery .flex-direction-nav .flex-prev::before { content: "\2039"; }
+.ivl-visual .woocommerce-product-gallery .flex-direction-nav .flex-next { right: 12px; }
+.ivl-visual .woocommerce-product-gallery .flex-direction-nav .flex-next::before { content: "\203A"; }
+.ivl-visual .woocommerce-product-gallery .flex-direction-nav a:hover,
+.ivl-visual .woocommerce-product-gallery .flex-direction-nav a:focus-visible { box-shadow: var(--brilho-aqua); background: var(--roxo-profundo); }
+.ivl-visual .woocommerce-product-gallery .flex-direction-nav .flex-disabled { opacity: .35; pointer-events: none; }
+.ivl-visual .woocommerce-product-gallery ol.flex-control-thumbs { display: flex; gap: 10px; margin: 12px 0 0 !important; padding: 0 !important; }
+.ivl-visual .woocommerce-product-gallery ol.flex-control-thumbs li { width: auto !important; flex: 0 0 84px; margin: 0 !important; float: none !important; }
+.ivl-visual .woocommerce-product-gallery ol.flex-control-thumbs li img { border-radius: 10px; opacity: .55; border: 2px solid transparent; cursor: pointer; }
+.ivl-visual .woocommerce-product-gallery ol.flex-control-thumbs li img.flex-active { opacity: 1; border-color: var(--roxo); }
+.ivl-visual .woocommerce-product-gallery ol.flex-control-thumbs li img:hover { opacity: 1; }
+.ivl-visual div.product .woocommerce-tabs .panel h3 { font-size: 1.3rem !important; margin: 1.4em 0 .5em !important; color: var(--roxo-profundo) !important; }
+.ivl-visual div.product .woocommerce-tabs .panel p, .ivl-visual div.product .woocommerce-tabs .panel li { font-size: 1rem !important; line-height: 1.65 !important; }
+.ivl-visual div.product .woocommerce-tabs .panel ul { margin: 0 0 1em 1.2em !important; }
+.ivl-visual div.product .woocommerce-tabs .panel li { margin-bottom: .35em; }
+
+/* ---------- finalizar compra: 2 colunas (dados à esquerda, pedido à direita) ---------- */
+.ivl-visual form.checkout.woocommerce-checkout { display: block !important; width: 100% !important; max-width: 1180px !important; margin: 0 auto !important; }
+.ivl-visual form.checkout #customer_details,
+.ivl-visual form.checkout #order_review_heading,
+.ivl-visual form.checkout #order_review { width: auto !important; max-width: none !important; float: none !important; flex: none !important; }
+.ivl-visual form.checkout #customer_details .col-1,
+.ivl-visual form.checkout #customer_details .col-2 { float: none !important; width: 100% !important; max-width: none !important; margin-left: 0 !important; margin-right: 0 !important; }
+.ivl-visual form.checkout #customer_details .col-2 { margin-top: 24px !important; }
+.ivl-visual form.checkout #order_review_heading { margin: 32px 0 12px !important; font-size: 1.4rem !important; }
+.ivl-visual form.checkout #order_review { background: var(--branco); border: 1px solid var(--divisor); border-radius: 16px; padding: 20px !important; box-sizing: border-box; }
+.ivl-visual form.checkout #order_review table.shop_table { margin: 0 0 16px !important; border-radius: 10px; }
+@media (min-width: 980px) {
+  .ivl-visual form.checkout.woocommerce-checkout { display: grid !important; grid-template-columns: minmax(0, 1fr) 440px; column-gap: 40px; align-items: start; }
+  .ivl-visual form.checkout #customer_details { grid-column: 1; grid-row: 1 / span 2; }
+  .ivl-visual form.checkout #order_review_heading { grid-column: 2; grid-row: 1; margin-top: 0 !important; }
+  .ivl-visual form.checkout #order_review { grid-column: 2; grid-row: 2; }
+}
+.ivl-visual.woocommerce-checkout .woocommerce.alignwide { margin-left: 0 !important; margin-right: 0 !important; width: auto !important; max-width: 100% !important; }
+@media (max-width: 979px) { .ivl-visual form.checkout #order_review { padding: 14px !important; } }
+.ivl-visual #payment ul.payment_methods > li { display: flex; flex-wrap: wrap; align-items: center; column-gap: 10px; }
+.ivl-visual #payment ul.payment_methods > li > input[type="radio"] { margin: 0 !important; flex: 0 0 auto; }
+.ivl-visual #payment ul.payment_methods > li > label { display: inline-flex !important; align-items: center; gap: 8px; margin: 0 !important; width: auto !important; flex: 1 1 0; min-width: 0; }
+.ivl-visual #payment ul.payment_methods > li > .payment_box { flex: 0 0 100%; }
+.ivl-visual.woocommerce-checkout .woocommerce-shipping-totals th { font-size: 0 !important; }
+.ivl-visual.woocommerce-checkout .woocommerce-shipping-totals th::before { font-size: .95rem !important; font-weight: 700 !important; color: var(--preto) !important; }
+
+/* Banner novo da loja (Banner 1, cidade de Signaria) - 25/11/2026. Para voltar ao banner antigo, apague este bloco. */
+.ivl-visual .box-image .single-page-img { background-image: url("img/banner-signaria.webp?v=1") !important; background-size: cover !important; background-position: center center !important; background-repeat: no-repeat !important; height: min(22.222vw, 400px) !important; min-height: 150px !important; }
+.ivl-visual .box-image .single-page-img::after { display: none !important; }
+@media (max-width: 700px) { .ivl-visual .box-image .single-page-img { height: 170px !important; background-position: 38% center !important; } }

@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Arquivos da loja: guardar exatamente como estão no servidor (sem converter quebra de linha)
+loja/servidor/** -text

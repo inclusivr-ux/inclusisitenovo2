@@ -1,10 +1,12 @@
 # Site da InclusiVR (inclusivr.com.br)
 
-Código do site principal. O que está no `public_html` do servidor (HostGator) é igual a este repositório, com as exceções listadas abaixo. O repositório também serve de prévia no GitHub Pages.
+Código do site principal. O que está no `public_html` do servidor (HostGator) é igual a este repositório, com as exceções listadas abaixo. O repositório também serve de prévia no GitHub Pages (https://inclusivr-ux.github.io/inclusisitenovo2/).
+
+A pasta `loja/` é outra coisa: o front-end da loja (loja.inclusivr.com.br) e a prévia dela. Ela **não** vai para o `public_html`. Ver `loja/LEIA-ME.md`.
 
 ## Como publicar sem estragar nada
 
-- Envie só os arquivos que mudaram, ou envie tudo por cima sem apagar o que já está lá. Não esvazie o `public_html` antes: algumas pastas só existem no servidor (lista abaixo).
+- Envie só os arquivos que mudaram, ou envie tudo por cima sem apagar o que já está lá (menos a pasta `loja/`, que é da loja e tem o próprio caminho de publicação). Não esvazie o `public_html` antes: algumas pastas só existem no servidor (lista abaixo).
 - O servidor grava os arquivos com a quebra de linha do Windows (CRLF); aqui é LF. O site funciona igual. Para comparar o servidor com o repositório, ignore essa diferença.
 - HTML não fica em cache; CSS fica 1 dia e JS fica 1 hora (regra do `.htaccess`). Depois de mudar CSS ou JS, quem já visitou o site pode ver a versão antiga por algum tempo.
 - O `.htaccess` daqui é o mesmo do servidor, inclusive o trecho que o cPanel gera sozinho (versão do PHP). Se a versão do PHP mudar no cPanel, atualize esse trecho aqui também.
